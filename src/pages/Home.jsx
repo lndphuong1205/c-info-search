@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import Header from "../components/Header"
 import homeStore from "../stores/homeStore"
 
 
@@ -11,6 +12,7 @@ export default function Home() {
 
   return (
     <div>
+      <Header />
       <input type="text" value={store.query} onChange={store.setQuery} />
       {store.coinsArray.map(coin => {
         return (
