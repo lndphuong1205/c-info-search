@@ -9,6 +9,12 @@ const homeStore = create((set) => ({
   coinsArray: [],
   trendingcoinsArray: [],
   query: '',
+  searching: false,
+  searched: false,
+
+  resetQuery: () => {
+    set({ query: '' })
+  },
 
   setQuery: (e) => {
     set({ query: e.target.value })
@@ -16,6 +22,7 @@ const homeStore = create((set) => ({
   },
 
   searchCoins: debounce(async () => {
+    set({ searching: true })
     const { query, trendingcoinsArray } = homeStore.getState()
     if (query.length > 2) {
       const res = await axios.get(`https://api.coingecko.com/api/v3/search?query=${query}`)
@@ -24,13 +31,13 @@ const homeStore = create((set) => ({
         return {
           name: coin.name,
           id: coin.id,
-          image: coin.large
+          image: coin.large,
         }
       })
-      set({ coinsArray: coins })
+      set({ coinsArray: coins, searching: false, searched: true })
     }
     else {
-      set({ coinsArray: trendingcoinsArray })
+      set({ coinsArray: trendingcoinsArray, searching: false, searched: false })
     }
   }, 500),
 
