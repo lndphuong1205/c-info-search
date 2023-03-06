@@ -12,8 +12,8 @@ const homeStore = create((set) => ({
   searching: false,
   searched: false,
 
-  resetQuery: () => {
-    set({ query: '' })
+  resetValue: () => {
+    set({ query: '', searched: false })
   },
 
   setQuery: (e) => {

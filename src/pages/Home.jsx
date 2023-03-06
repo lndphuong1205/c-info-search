@@ -1,6 +1,5 @@
 import classNames from "classnames"
 import React from "react"
-import { Link } from "react-router-dom"
 import Header from "../components/Header"
 import ListItem from "../components/ListItem"
 import homeStore from "../stores/homeStore"
@@ -12,7 +11,7 @@ export default function Home() {
   React.useEffect(() => {
     store.fetchCoins()
     return () => {
-      store.resetQuery();
+      store.resetValue();
     }
   }, [])
 
