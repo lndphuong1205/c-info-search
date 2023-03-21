@@ -12,9 +12,9 @@ export default function ListItem({ coin }) {
         {coin.price_btc && <span className="home-crypto-prices">
           <span className="home-crypto-btc">
             <img src="/bitcoin.webp" />
-            {coin.price_btc} BTC
+            {coin.price_btc.toFixed(10)} BTC
           </span>
-          <span className="home-crypto-usd">({coin.price_usd} USD)</span>
+          <span className="home-crypto-usd">({coin.price_usd.toFixed(10)} USD)</span>
         </span>}
       </Link>
     </div>
